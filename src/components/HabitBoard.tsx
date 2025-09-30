@@ -12,7 +12,7 @@ export function HabitBoard() {
     <div className="space-y-3">
       <div className="flex items-center gap-2">
         <div className="px-2 py-1 rounded border border-[var(--border)] bg-[var(--card)]">{format(start, 'dd/MM')} - {format(end, 'dd/MM')}</div>
-        <button className="px-3 py-1 rounded border border-[var(--border)]">Hoje</button>
+        <button className="px-3 py-1 rounded border border-[var(--border)] hover:bg-[var(--muted)]/10">Hoje</button>
       </div>
       <Card>
         <div className="grid grid-cols-[minmax(160px,1fr)_repeat(7,minmax(80px,1fr))]">
@@ -25,7 +25,7 @@ export function HabitBoard() {
           ))}
           {items.map((h) => (
             <>
-              <div key={h.id + '-name'} className="px-4 py-3 border-b border-[var(--border)] flex items-center gap-2">
+              <div key={h.id + '-name'} className="px-4 py-3 border-b border-[var(--border)] flex items-center gap-2 bg-[var(--bg)]/30">
                 <span className="w-1.5 h-1.5 rounded-full bg-[var(--primary)]" />
                 <span className="font-medium">{h.title}</span>
               </div>

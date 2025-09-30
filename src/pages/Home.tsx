@@ -27,7 +27,10 @@ export function HomePage() {
 
   return (
     <div className="space-y-6 max-w-6xl">
-      <h1 className="text-2xl font-semibold">Meus Hábitos</h1>
+      <div className="mb-2">
+        <h1 className="text-2xl font-semibold text-center">Meus Hábitos</h1>
+        <p className="text-center text-sm opacity-70">Construa uma rotina consistente</p>
+      </div>
       <HabitBoard />
 
       <h2 className="text-xl font-semibold">DDD - Depósito De Demandas</h2>
