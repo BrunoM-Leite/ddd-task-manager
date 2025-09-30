@@ -1,14 +1,20 @@
 :root.theme-light {
-  --bg: #ffffff;
-  --fg: #0f172a;
-  --muted: #e2e8f0;
-  --primary: #0ea5e9;
+  --bg: #0b1120; /* app shell dark by default; will be overridden via classes */
+  --fg: #e2e8f0;
+  --muted: #1f2937;
+  --primary: #22d3ee;
+  --card: #111827;
+  --border: #374151;
+  --shadow: 0 4px 16px rgba(0,0,0,0.25);
 }
 
 :root.theme-dark {
-  --bg: #0b1220;
+  --bg: #0b1120;
   --fg: #e2e8f0;
   --muted: #1f2937;
-  --primary: #38bdf8;
+  --primary: #22d3ee;
+  --card: #111827;
+  --border: #374151;
+  --shadow: 0 4px 16px rgba(0,0,0,0.35);
 }
 

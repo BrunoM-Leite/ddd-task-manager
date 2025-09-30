@@ -1,5 +1,6 @@
 import { useTasksStore } from '../stores/tasks.store'
 import { useHabitsStore } from '../stores/habits.store'
+import { Card } from '../components/ui/Card'
 
 export function EstatisticasPage() {
   const { items } = useTasksStore()
@@ -12,18 +13,18 @@ export function EstatisticasPage() {
     <div className="space-y-4">
       <h1 className="text-xl font-semibold">Estatísticas</h1>
       <div className="grid sm:grid-cols-3 gap-4">
-        <div className="border border-[var(--muted)] rounded p-4">
+        <Card className="p-4">
           <div className="text-sm opacity-70">Tarefas concluídas</div>
           <div className="text-2xl font-semibold">{doneTasks}</div>
-        </div>
-        <div className="border border-[var(--muted)] rounded p-4">
+        </Card>
+        <Card className="p-4">
           <div className="text-sm opacity-70">Total de tarefas</div>
           <div className="text-2xl font-semibold">{totalTasks}</div>
-        </div>
-        <div className="border border-[var(--muted)] rounded p-4">
+        </Card>
+        <Card className="p-4">
           <div className="text-sm opacity-70">Streak médio (hábitos)</div>
           <div className="text-2xl font-semibold">{avgStreak}</div>
-        </div>
+        </Card>
       </div>
     </div>
   )

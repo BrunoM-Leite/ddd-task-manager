@@ -26,28 +26,37 @@ export function Calendar() {
     setCursor(new Date())
   }
 
+  const weekdays = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom']
+
   return (
-    <div className="border border-[var(--muted)] rounded">
-      <div className="flex items-center justify-between p-3 border-b border-[var(--muted)]">
+    <div className="border border-[var(--border)] rounded bg-[var(--card)]">
+      <div className="flex items-center justify-between p-3 border-b border-[var(--border)]">
         <div className="flex items-center gap-2">
-          <button onClick={prev} className="px-2 py-1 rounded border border-[var(--muted)]">◀</button>
-          <button onClick={today} className="px-2 py-1 rounded border border-[var(--muted)]">Hoje</button>
-          <button onClick={next} className="px-2 py-1 rounded border border-[var(--muted)]">▶</button>
+          <button onClick={prev} className="px-2 py-1 rounded border border-[var(--border)] hover:bg-[var(--muted)]/10">◀</button>
+          <button onClick={today} className="px-2 py-1 rounded border border-[var(--border)] hover:bg-[var(--muted)]/10">Hoje</button>
+          <button onClick={next} className="px-2 py-1 rounded border border-[var(--border)] hover:bg-[var(--muted)]/10">▶</button>
         </div>
         <div className="font-medium">{title}</div>
         <div className="flex items-center gap-2">
-          <button onClick={() => setView('week')} className={`px-2 py-1 rounded border border-[var(--muted)] ${view === 'week' ? 'bg-[var(--muted)]/20' : ''}`}>Semana</button>
-          <button onClick={() => setView('month')} className={`px-2 py-1 rounded border border-[var(--muted)] ${view === 'month' ? 'bg-[var(--muted)]/20' : ''}`}>Mês</button>
+          <button onClick={() => setView('week')} className={`px-2 py-1 rounded border border-[var(--border)] ${view === 'week' ? 'bg-[var(--muted)]/20' : 'hover:bg-[var(--muted)]/10'}`}>Semana</button>
+          <button onClick={() => setView('month')} className={`px-2 py-1 rounded border border-[var(--border)] ${view === 'month' ? 'bg-[var(--muted)]/20' : 'hover:bg-[var(--muted)]/10'}`}>Mês</button>
         </div>
       </div>
 
-      <div className={`grid ${view === 'month' ? 'grid-cols-7' : 'grid-cols-7'} gap-px bg-[var(--muted)]/60`}>
+      <div className="grid grid-cols-7 text-xs opacity-70 px-2 pt-2">
+        {weekdays.map((w) => (
+          <div key={w} className="px-2 pb-2">{w}</div>
+        ))}
+      </div>
+
+      <div className={`grid grid-cols-7 gap-px bg-[var(--muted)]/40`}>
         {days.map((day) => {
           const dayTasks = tasks.filter((t) => t.dueDate && isSameDay(new Date(t.dueDate), day))
           const doneHabits = habits.filter((h) => h.history.some((d) => isSameDay(new Date(d), day)))
+          const isToday = isSameDay(day, new Date())
           return (
             <div key={day.toISOString()} className="bg-[var(--bg)] p-2 min-h-[84px]">
-              <div className="text-xs opacity-70">{format(day, 'dd/MM')}</div>
+              <div className={`text-xs ${isToday ? 'text-[var(--primary)] font-semibold' : 'opacity-70'}`}>{format(day, 'dd/MM')}</div>
               <div className="mt-2 flex flex-col gap-1">
                 {dayTasks.length > 0 && (
                   <span className="text-[10px] inline-block px-2 py-0.5 rounded bg-[var(--primary)]/15 text-[var(--primary)]">
@@ -67,4 +76,5 @@ export function Calendar() {
     </div>
   )
 }
+
 

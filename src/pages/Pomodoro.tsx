@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { usePomodoroStore } from '../stores/pomodoro.store'
+import * as Dialog from '@radix-ui/react-dialog'
 
 export function PomodoroPage() {
   const { isRunning, secondsLeft, start, pause, reset, focusMinutes, breakMinutes, longBreakMinutes, soundEnabled, setSettings } = usePomodoroStore()
@@ -32,25 +33,38 @@ export function PomodoroPage() {
         <button onClick={start} className="px-3 py-2 rounded border border-[var(--muted)]">Start</button>
         <button onClick={pause} className="px-3 py-2 rounded border border-[var(--muted)]">Pause</button>
         <button onClick={reset} className="px-3 py-2 rounded border border-[var(--muted)]">Reset</button>
+        <Dialog.Root>
+          <Dialog.Trigger asChild>
+            <button className="px-3 py-2 rounded border border-[var(--muted)]">⚙️</button>
+          </Dialog.Trigger>
+          <Dialog.Portal>
+            <Dialog.Overlay className="fixed inset-0 bg-black/50" />
+            <Dialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[92vw] max-w-md rounded border border-[var(--border)] bg-[var(--card)] p-4">
+              <Dialog.Title className="text-lg font-semibold mb-3">Configurações</Dialog.Title>
+              <div className="grid sm:grid-cols-2 gap-3">
+                <label className="text-sm">Foco (min)
+                  <input type="number" value={focusMinutes} onChange={(e) => setSettings({ focusMinutes: Number(e.target.value) })} className="w-full px-3 py-2 rounded border border-[var(--muted)] bg-transparent" />
+                </label>
+                <label className="text-sm">Pausa (min)
+                  <input type="number" value={breakMinutes} onChange={(e) => setSettings({ breakMinutes: Number(e.target.value) })} className="w-full px-3 py-2 rounded border border-[var(--muted)] bg-transparent" />
+                </label>
+                <label className="text-sm">Pausa longa (min)
+                  <input type="number" value={longBreakMinutes} onChange={(e) => setSettings({ longBreakMinutes: Number(e.target.value) })} className="w-full px-3 py-2 rounded border border-[var(--muted)] bg-transparent" />
+                </label>
+                <label className="text-sm flex items-center gap-2">Som
+                  <input type="checkbox" checked={soundEnabled} onChange={(e) => setSettings({ soundEnabled: e.target.checked })} />
+                </label>
+              </div>
+              <div className="flex justify-end mt-4">
+                <Dialog.Close asChild>
+                  <button className="px-3 py-2 rounded border border-[var(--muted)]">Fechar</button>
+                </Dialog.Close>
+              </div>
+            </Dialog.Content>
+          </Dialog.Portal>
+        </Dialog.Root>
       </div>
 
-      <details className="border border-[var(--muted)] rounded p-3">
-        <summary className="cursor-pointer">Configurações</summary>
-        <div className="grid sm:grid-cols-2 gap-3 mt-3">
-          <label className="text-sm">Foco (min)
-            <input type="number" value={focusMinutes} onChange={(e) => setSettings({ focusMinutes: Number(e.target.value) })} className="w-full px-3 py-2 rounded border border-[var(--muted)] bg-transparent" />
-          </label>
-          <label className="text-sm">Pausa (min)
-            <input type="number" value={breakMinutes} onChange={(e) => setSettings({ breakMinutes: Number(e.target.value) })} className="w-full px-3 py-2 rounded border border-[var(--muted)] bg-transparent" />
-          </label>
-          <label className="text-sm">Pausa longa (min)
-            <input type="number" value={longBreakMinutes} onChange={(e) => setSettings({ longBreakMinutes: Number(e.target.value) })} className="w-full px-3 py-2 rounded border border-[var(--muted)] bg-transparent" />
-          </label>
-          <label className="text-sm flex items-center gap-2">Som
-            <input type="checkbox" checked={soundEnabled} onChange={(e) => setSettings({ soundEnabled: e.target.checked })} />
-          </label>
-        </div>
-      </details>
     </div>
   )
 }
