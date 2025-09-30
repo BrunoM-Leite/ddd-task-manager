@@ -1,4 +1,4 @@
-# Aplicativo de Controle de Hábitos com DDD – Clone (React + Vite)
+# Aplicativo de Controle de Hábitos com DDD – (React + Vite)
 
 ## Executar localmente
 ```bash
@@ -32,9 +32,3 @@ Alternativas:
 - Estatísticas: números refletem dados locais.
 - Pomodoro: start/pause/reset; alterar tempos e som; persistência; alerta sonoro.
 - Responsividade: menu mobile abre/fecha; foco visível e navegação por teclado.
-
-## Observações
-- Dados apenas em LocalStorage. Sem backend.
-- Sons: arquivo `public/beep.mp3` é um placeholder (substitua se quiser).
-- Se notar diferenças visuais/fluxos em relação ao site original, me avise com prints para ajustarmos.
-
