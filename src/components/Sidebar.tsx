@@ -2,11 +2,11 @@ import { NavLink } from 'react-router-dom'
 import { LayoutDashboard, BarChart3, Boxes, Archive, Timer, Disc } from 'lucide-react'
 
 export function Sidebar() {
-  const baseItem = 'flex items-center gap-3 px-3 py-2 rounded-xl my-1 text-sm transition-colors'
+  const baseItem = 'flex items-center gap-3 h-11 px-4 rounded-2xl my-1 text-sm transition-colors'
   return (
-    <aside className="hidden md:flex w-60 shrink-0 border-r border-[var(--border)] px-3 pt-5 pb-4 flex-col bg-[var(--card)]">
-      <div className="flex items-center gap-3 px-2 pb-4 mb-3 border-b border-[var(--border)]">
-        <div className="w-9 h-9 rounded-full bg-[var(--muted)]/20 flex items-center justify-center">
+    <aside className="hidden md:flex w-60 shrink-0 border-r border-[var(--border)] px-4 pt-5 pb-6 flex-col bg-[var(--card)]">
+      <div className="flex items-center gap-3 px-2 pb-4 mb-4 border-b border-[var(--border)]">
+        <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center">
           <Disc size={18} />
         </div>
         <div className="font-semibold">HabitFlow</div>
@@ -15,7 +15,7 @@ export function Sidebar() {
         <NavLink
           to="/"
           className={({ isActive }: { isActive: boolean }) =>
-            `${baseItem} ${isActive ? 'bg-[var(--muted)]/30 text-[var(--primary)]' : 'hover:bg-[var(--muted)]/10'}`
+            `${baseItem} ${isActive ? 'bg-white/8 border border-[var(--border)] text-[var(--fg)]' : 'hover:bg-white/6 text-[var(--fg)]/80'}`
           }
         >
           <LayoutDashboard size={16} /> <span>Home</span>
@@ -23,7 +23,7 @@ export function Sidebar() {
         <NavLink
           to="/estatisticas"
           className={({ isActive }: { isActive: boolean }) =>
-            `${baseItem} ${isActive ? 'bg-[var(--muted)]/30 text-[var(--primary)]' : 'hover:bg-[var(--muted)]/10'}`
+            `${baseItem} ${isActive ? 'bg-white/8 border border-[var(--border)] text-[var(--fg)]' : 'hover:bg-white/6 text-[var(--fg)]/80'}`
           }
         >
           <BarChart3 size={16} /> <span>Estatísticas</span>
@@ -31,7 +31,7 @@ export function Sidebar() {
         <NavLink
           to="/ddd"
           className={({ isActive }: { isActive: boolean }) =>
-            `${baseItem} ${isActive ? 'bg-[var(--muted)]/30 text-[var(--primary)]' : 'hover:bg-[var(--muted)]/10'}`
+            `${baseItem} ${isActive ? 'bg-white/8 border border-[var(--border)] text-[var(--fg)]' : 'hover:bg-white/6 text-[var(--fg)]/80'}`
           }
         >
           <Boxes size={16} /> <span>DDD</span>
@@ -39,7 +39,7 @@ export function Sidebar() {
         <NavLink
           to="/bau"
           className={({ isActive }: { isActive: boolean }) =>
-            `${baseItem} ${isActive ? 'bg-[var(--muted)]/30 text-[var(--primary)]' : 'hover:bg-[var(--muted)]/10'}`
+            `${baseItem} ${isActive ? 'bg-white/8 border border-[var(--border)] text-[var(--fg)]' : 'hover:bg-white/6 text-[var(--fg)]/80'}`
           }
         >
           <Archive size={16} /> <span>Baú</span>
@@ -47,7 +47,7 @@ export function Sidebar() {
         <NavLink
           to="/pomodoro"
           className={({ isActive }: { isActive: boolean }) =>
-            `${baseItem} ${isActive ? 'bg-[var(--muted)]/30 text-[var(--primary)]' : 'hover:bg-[var(--muted)]/10'}`
+            `${baseItem} ${isActive ? 'bg-white/8 border border-[var(--border)] text-[var(--fg)]' : 'hover:bg-white/6 text-[var(--fg)]/80'}`
           }
         >
           <Timer size={16} /> <span>Pomodoro</span>
