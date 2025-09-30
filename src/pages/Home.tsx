@@ -1,6 +1,7 @@
 import type { FormEvent } from 'react'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useTasksStore } from '../stores/tasks.store'
+import { useHabitsStore } from '../stores/habits.store'
 import { Calendar } from '../components/Calendar'
 import { HabitBoard } from '../components/HabitBoard'
 import { Card } from '../components/ui/Card'
@@ -10,6 +11,10 @@ import { PageHeader } from '../components/PageHeader'
 
 export function HomePage() {
   const { items, add, update, remove, toggleDone } = useTasksStore()
+  const seedDefaults = useHabitsStore((s) => s.seedDefaults)
+  useEffect(() => {
+    seedDefaults()
+  }, [seedDefaults])
   // habits store is used by HabitBoard internally
   const inbox = useMemo(() => items.filter((t) => t.bucket === 'inbox'), [items])
   const [title, setTitle] = useState('')

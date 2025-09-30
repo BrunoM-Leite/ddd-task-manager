@@ -13,22 +13,22 @@ export function HabitBoard() {
   return (
     <div className="space-y-3">
       <div className="flex items-center gap-2">
-        <div className="px-2 py-1 rounded border border-[var(--border)] bg-[var(--card)]">{format(start, 'dd/MM')} - {format(end, 'dd/MM')}</div>
-        <button className="px-3 py-1 rounded border border-[var(--border)] hover:bg-[var(--muted)]/10">Hoje</button>
-        <button onClick={seedDefaults} className="px-3 py-1 rounded border border-[var(--border)] hover:bg-[var(--muted)]/10">Novo Hábito</button>
+        <div className="px-3 py-1 rounded-full bg-[var(--card)] border border-[var(--border)] text-xs opacity-80">{format(start, 'dd/MM')} - {format(end, 'dd/MM')}</div>
+        <button className="px-3 py-1 rounded-full border border-[var(--border)] hover:bg-[var(--muted)]/10 text-xs">Hoje</button>
+        <button onClick={seedDefaults} className="px-3 py-1 rounded-full border border-[var(--border)] hover:bg-[var(--muted)]/10 text-xs">Novo Hábito</button>
       </div>
-      <Card>
+      <Card className="shadow-[var(--shadow)] overflow-hidden">
         <div className="grid grid-cols-[minmax(220px,1fr)_repeat(7,124px)]">
-          <div className="px-5 py-4 text-sm opacity-70 border-b border-[var(--border)]">Hábito</div>
+          <div className="px-5 py-4 text-sm opacity-70 border-b border-[var(--border)] bg-[var(--card)]">Hábito</div>
           {days.map((d) => (
-            <div key={d.toISOString()} className="px-5 py-4 text-xs opacity-70 text-center border-b border-[var(--border)]">
+            <div key={d.toISOString()} className="px-5 py-4 text-xs opacity-70 text-center border-b border-[var(--border)] bg-[var(--card)]">
               {format(d, 'eee', { locale: ptBR })}
               <div className="mt-1 text-[10px]">{format(d, 'd', { locale: ptBR })}</div>
             </div>
           ))}
           {items.map((h) => (
             <>
-              <div key={h.id + '-name'} className="px-5 py-4 border-b border-[var(--border)] flex items-center gap-3 bg-[var(--card)]/60">
+              <div key={h.id + '-name'} className="px-5 py-4 border-b border-[var(--border)] flex items-center gap-3">
                 <span className="w-2 h-2 rounded-full bg-[var(--primary)]" />
                 <span className="font-medium">{h.title}</span>
               </div>
