@@ -27,15 +27,15 @@ export function HabitBoard() {
           ))}
           {items.map((h) => (
             <>
-              <div key={h.id + '-name'} className="px-4 py-3 border-b border-[var(--border)] flex items-center gap-2 bg-[var(--bg)]/30">
-                <span className="w-1.5 h-1.5 rounded-full bg-[var(--primary)]" />
+              <div key={h.id + '-name'} className="px-4 py-4 border-b border-[var(--border)] flex items-center gap-2 bg-[var(--card)]/60">
+                <span className="w-2 h-2 rounded-full bg-[var(--primary)]" />
                 <span className="font-medium">{h.title}</span>
               </div>
               {days.map((d, idx) => (
                 <button
                   key={h.id + '-' + idx}
                   onClick={() => toggleAtDate(h.id, d.toISOString())}
-                  className={`border-b border-[var(--border)] flex items-center justify-center p-3 hover:bg-[var(--muted)]/10`}
+                  className={`border-b border-[var(--border)] flex items-center justify-center py-4 hover:bg-[var(--muted)]/10`}
                 >
                   <span className={`inline-block w-4 h-4 rounded ${h.history.some((i) => i.slice(0,10) === d.toISOString().slice(0,10)) ? 'bg-emerald-500' : 'border border-[var(--border)]'}`} />
                 </button>
