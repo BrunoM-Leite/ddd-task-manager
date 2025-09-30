@@ -1,5 +1,4 @@
-import { ReactNode } from 'react'
-import { Button } from './ui/Button'
+import type { ReactNode } from 'react'
 
 type Props = {
   title: string
