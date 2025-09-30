@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.DS_Store
+build/
+.env.local
+.env
+.vercel
+.netlify
+.parcel-cache
+Thumbs.db
